@@ -7,7 +7,7 @@ export default function Home() {
 
       <div className="flex justify-between items-center">
         <div className="flex flex-col gap-5">
-          <p className="text-2xl font-mono">Hello, I'm</p>
+          <p className="text-2xl font-mono">Hello, I&apos;m</p>
           <h1 className="font-mono text-4xl font-bold">Atharva Deosthale</h1>
           <p className="font-mono text-xl">
             I code and write content about it for a living.

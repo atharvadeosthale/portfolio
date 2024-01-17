@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -12,6 +13,13 @@ export default function Home() {
           <p className="font-mono text-xl">
             I code and write content about it for a living.
           </p>
+
+          <div className="flex gap-5 font-mono">
+            <a href="mailto:hey@atharva.codes">
+              <Button>Email me</Button>
+            </a>
+            <Button variant="secondary">Send me an anonymous message</Button>
+          </div>
         </div>
 
         <img src="/pfp.jpeg" className="rounded-lg w-52 h-52 object-cover" />

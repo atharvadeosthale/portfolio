@@ -22,7 +22,7 @@ export default function Home() {
           </div>
         </div>
 
-        <img src="/pfp.jpeg" className="rounded-lg w-52 h-52 object-cover" />
+        <img src="/pfp.jpeg" className="rounded-lg w-52 h-auto object-cover" />
       </div>
     </main>
   );

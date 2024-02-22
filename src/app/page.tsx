@@ -1,6 +1,14 @@
+import Experience from "@/components/experience";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
-import { FaLinkedin, FaXTwitter, FaYoutube, FaGithub } from "react-icons/fa6";
+import {
+  FaLinkedin,
+  FaXTwitter,
+  FaYoutube,
+  FaGithub,
+  FaPen,
+} from "react-icons/fa6";
+import { experiences } from "../../constants/experiences";
 
 export default function Home() {
   return (
@@ -13,7 +21,7 @@ export default function Home() {
           <p className="text-2xl">Hello, I&apos;m</p>
           <h1 className="text-4xl font-bold">Atharva Deosthale</h1>
           <p className="text-xl">
-            I code and write content about it for a living.
+            I code and create content about it for a living.
           </p>
 
           <div className="flex gap-5">
@@ -23,6 +31,11 @@ export default function Home() {
             <a href="https://youtube.com/AtharvaDeosthale" target="_blank">
               <Button variant="outline">
                 <FaYoutube />
+              </Button>
+            </a>
+            <a href="https://blog.atharva.codes" target="_blank">
+              <Button variant="outline">
+                <FaPen />
               </Button>
             </a>
             <a href="https://x.com/athudeosthale" target="_blank">
@@ -44,6 +57,16 @@ export default function Home() {
         </div>
 
         <img src="/pfp.jpeg" className="rounded-lg w-52 h-auto object-cover" />
+      </div>
+
+      {/* Experiences section */}
+      <div>
+        <h2 className="text-3xl font-bold mt-10">Experiences</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+          {experiences.map((experience, index) => (
+            <Experience key={index} {...experience} />
+          ))}
+        </div>
       </div>
     </main>
   );

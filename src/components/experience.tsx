@@ -19,7 +19,7 @@ export default function Experience({
         <h3 className="text-lg font-semibold">{company}</h3>
         <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
         <p className="text-sm text-gray-500 dark:text-gray-400">{duration}</p>
-        <p className="flex-1 my-4 text-sm/relaxed">{description}</p>
+        <div className="flex-1 my-4 text-sm/relaxed">{description}</div>
       </div>
     </div>
   );

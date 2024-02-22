@@ -10,6 +10,12 @@ import {
 } from "react-icons/fa6";
 import { experiences } from "../../constants/experiences";
 
+export const metadata = {
+  title: "Atharva Deosthale - Portfolio",
+  description:
+    "Hello, I'm Atharva Deosthale. I code and create content about it for a living. Feel free to reach out to me on my socials or email!",
+};
+
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto p-5 xl:p-0">

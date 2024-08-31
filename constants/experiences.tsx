@@ -1,5 +1,19 @@
 export const experiences = [
   {
+    company: "MyShell.ai",
+    role: "Developer Relations Engineer",
+    duration: "Apr 2024 - Jun 2024",
+    description: (
+      <p>
+        I worked as a Developer Relations Engineer at MyShell.ai, helping
+        developers create their own AI workflows using a powerful tool called as
+        Pro Config that can bring various AI tools together to build a unique
+        and useful workflow. I worked on maintaining the documentation and
+        creating content across the YouTube channel and blog.
+      </p>
+    ),
+  },
+  {
     company: "thirdweb",
     role: "Developer Relations Engineer",
     duration: "Oct 2022 - Aug 2023",

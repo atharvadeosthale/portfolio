@@ -68,6 +68,31 @@ export default function Home() {
         />
       </div>
 
+      {/* About section */}
+      <div className="mt-20 md:mt-16">
+        <h2 className="text-3xl font-bold mb-6">About Me</h2>
+        <div className="border border-gray-500 rounded-lg p-6 ">
+          <p className="text-lg leading-relaxed mb-4">
+            I'm Atharva Deosthale, a passionate developer and content creator
+            with a love for all things tech. With a background in Developer
+            Relations and Technical Writing, I bridge the gap between complex
+            technologies and developer communities.
+          </p>
+          <p className="text-lg leading-relaxed mb-4">
+            My journey in tech has led me through various roles, from crafting
+            AI workflows at MyShell.ai to empowering blockchain developers at
+            thirdweb. I thrive on sharing knowledge and helping others navigate
+            the ever-evolving world of programming.
+          </p>
+          <p className="text-lg leading-relaxed">
+            When I'm not coding or creating content, you can find me exploring
+            the latest tech trends, contributing to open-source projects, or
+            brainstorming my next YouTube video. Let's connect and build
+            something amazing together!
+          </p>
+        </div>
+      </div>
+
       {/* Experiences section */}
       <div className="mb-10">
         <h2 className="text-3xl font-bold mt-20 md:mt-10">Experiences</h2>

@@ -13,8 +13,28 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/github",
+        destination: "https://github.com/atharvadeosthale",
+        permanent: true,
+      },
+      {
+        source: "/linkedin",
+        destination: "https://linkedin.com/in/atharvadeosthale",
+        permanent: true,
+      },
+      {
+        source: "/instagram",
+        destination: "https://instagram.com/atharvadeosthale",
+        permanent: true,
+      },
+      {
         source: "/blog",
         destination: "https://blog.atharva.codes",
+        permanent: true,
+      },
+      {
+        source: "/examples",
+        destination: "https://examples.atharva.codes",
         permanent: true,
       },
     ];

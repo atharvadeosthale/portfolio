@@ -44,7 +44,7 @@ export default function Home() {
                 <FaPen />
               </Button>
             </a>
-            <a href="https://x.com/athudeosthale" target="_blank">
+            <a href="https://x.com/atharvabuilds" target="_blank">
               <Button variant="outline">
                 <FaXTwitter />
               </Button>

@@ -1,7 +1,26 @@
 export const experiences = [
   {
+    company: "Appwrite",
+    role: "Developer Relations (Video Content)",
+    logo: "/appwrite.png",
+    duration: "May 2025 - Present",
+    description: (
+      <p>
+        Currently working as a Developer Relations Engineer at Appwrite
+        facilitating getting videos to the final line and getting them
+        published. I&apos;m working closely with Dennis Ivy and learning from
+        the best in the game when it comes to technical video content. Other
+        than that, I&apos;m also working on the documentation and creating
+        content across the YouTube channel and blog. Other responsibilities
+        include repurposing long form content into short form and writing
+        technical articles.
+      </p>
+    ),
+  },
+  {
     company: "MyShell.ai",
     role: "Developer Relations Engineer",
+    logo: "/myshell.png",
     duration: "Apr 2024 - Jun 2024",
     description: (
       <p>
@@ -16,6 +35,7 @@ export const experiences = [
   {
     company: "thirdweb",
     role: "Developer Relations Engineer",
+    logo: "/thirdweb.jpeg",
     duration: "Oct 2022 - Aug 2023",
     description: (
       <p>
@@ -30,6 +50,7 @@ export const experiences = [
   {
     company: "LogRocket",
     role: "Freelance Technical Content Writer",
+    logo: "/logrocket.jpeg",
     duration: "Jun 2021 - Dec 2023",
     description: (
       <>

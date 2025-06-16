@@ -5,7 +5,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 export default function Navbar() {
   return (
     <div className="py-4 flex justify-between items-center mb-10">
-      <div>Atharva D.</div>
+      <div className="text-lg">Atharva D.</div>
       <div className="flex items-center gap-5">
         <ThemeToggler />
         <a href="https://github.com/atharvadeosthale/portfolio" target="_blank">

@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-mono">
+      <body className={`${inter.className} tracking-tight`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

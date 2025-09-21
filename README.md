@@ -1,4 +1,4 @@
-[Deploy using Appwrite (Localhost for now)](http://localhost:3000/console/deploy?repo=https://github.com/atharvadeosthale/portfolio)
+[![Deploy using Appwrite](./public/appwrite-button.png)](https://cloud.appwrite.io/console/sites/deploy?repo=https://github.com/atharvadeosthale/portfolio)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

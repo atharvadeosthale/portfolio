@@ -27,7 +27,7 @@ export default function Experience({
 
         {/* Experience card */}
         <div className="ml-16 flex-1">
-          <div className="group flex flex-col rounded-xl overflow-hidden border border-gray-800 bg-secondary/5 hover:bg-secondary/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="group flex flex-col rounded-xl overflow-hidden border border-border bg-secondary/5 hover:bg-secondary/10 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="p-6 flex-1 flex flex-col relative">
               {/* Duration at absolute top right */}
               <p className="absolute top-4 right-4 text-sm text-muted-foreground/80 font-medium bg-secondary/20 px-3 py-1 rounded-full">
@@ -62,7 +62,7 @@ export default function Experience({
   }
 
   return (
-    <div className="group flex flex-col rounded-xl overflow-hidden border border-gray-800 bg-secondary/5 hover:bg-secondary/10 shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="group flex flex-col rounded-xl overflow-hidden border border-border bg-secondary/5 hover:bg-secondary/10 shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="p-6 flex-1 flex flex-col relative">
         {/* Duration at absolute top right */}
         <p className="absolute top-4 right-4 text-sm text-muted-foreground/80 font-medium bg-secondary/20 px-3 py-1 rounded-full">

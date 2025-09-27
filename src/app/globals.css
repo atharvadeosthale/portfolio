@@ -67,10 +67,85 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    /* Subtle radial gradient backdrop with theme-aware colors */
+    background-image: radial-gradient(
+        1200px 600px at 100% -10%,
+        hsl(var(--primary) / 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        800px 400px at -10% 0%,
+        hsl(var(--accent) / 0.1),
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.15);
+    color: hsl(var(--primary));
+  }
+}
+
+@layer utilities {
+  .display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, -apple-system,
+      Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial,
+      Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-foreground;
+  }
+  .icon-btn {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full ring-1 ring-border hover:ring-primary/50 hover:bg-primary/10 transition;
+  }
+}
+
+/* Custom animations */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@layer utilities {
+  .animate-float-slow {
+    animation: float-y 6s ease-in-out infinite;
+  }
+  .animate-float-slower {
+    animation: float-y 8s ease-in-out infinite;
+  }
+  .shine-text {
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--primary)),
+      hsl(var(--foreground)),
+      hsl(var(--primary))
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 5s linear infinite;
   }
 }

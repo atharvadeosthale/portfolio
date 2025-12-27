@@ -20,7 +20,7 @@ export function SectionHeader({
           {overline}
         </p>
       )}
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight relative inline-block">
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight relative inline-block display">
         {title}
         <span className="absolute -z-10 left-0 right-0 -bottom-1 h-2 bg-primary/10 blur-[6px]"></span>
       </h2>

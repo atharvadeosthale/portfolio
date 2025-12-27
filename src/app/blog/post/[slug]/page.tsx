@@ -71,42 +71,65 @@ export default async function BlogPostPage({
     <Container>
       <Navbar />
 
-      <main className="py-10 md:py-16">
+      <main className="pt-4 pb-10 md:pt-6 md:pb-16">
         {/* Back Link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group"
         >
-          ← Back to Blog
+          <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Back to Blog
         </Link>
 
         {/* Cover Image */}
         {post.cover && (
-          <div className="relative aspect-video rounded-2xl overflow-hidden mb-8">
+          <div className="relative aspect-video rounded-2xl overflow-hidden mb-10 ring-1 ring-border/50 shadow-xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={post.cover}
               alt={post.title}
               className="w-full h-full object-cover"
             />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
           </div>
         )}
 
         {/* Post Header */}
-        <header className="mb-10">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+        <header className="mb-12">
+          {/* Reading time badge */}
+          <div className="mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium ring-1 ring-primary/20">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {post.readingTime}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 display">
             {post.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+
+          {/* Description */}
+          <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+            {post.description}
+          </p>
+
+          {/* Meta */}
+          <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-border/50">
             {post.author && (
               <>
                 <AuthorBadge author={post.author} size="md" />
-                <span>•</span>
+                <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
               </>
             )}
-            <time>{post.dateFormatted}</time>
-            <span>•</span>
-            <span>{post.readingTime}</span>
+            <time className="text-sm text-muted-foreground">
+              {post.dateFormatted}
+            </time>
           </div>
         </header>
 
@@ -130,7 +153,7 @@ export default async function BlogPostPage({
               </div>
             )}
 
-            <div className="prose-custom">
+            <div>
               <MDXRemote
                 source={post.content}
                 components={mdxComponents}
@@ -153,6 +176,27 @@ export default async function BlogPostPage({
                   },
                 }}
               />
+            </div>
+
+            {/* Post Footer */}
+            <div className="mt-16 pt-8 border-t border-border/50">
+              {post.author && (
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-6 rounded-xl bg-secondary/5 ring-1 ring-border/50">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.author.image}
+                    alt={post.author.name}
+                    className="w-16 h-16 rounded-full object-cover ring-2 ring-border"
+                  />
+                  <div className="text-center sm:text-left">
+                    <p className="text-sm text-muted-foreground mb-1">Written by</p>
+                    <Link href={`/blog/author/${post.author.slug}`} className="font-semibold hover:text-primary transition-colors">
+                      {post.author.name}
+                    </Link>
+                    <p className="text-sm text-muted-foreground mt-1">{post.author.bio}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </article>
         </div>

@@ -27,7 +27,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="py-6 flex justify-between items-center mb-10 sticky top-0 z-50 relative">
+    <div className="py-6 flex justify-between items-center sticky top-0 z-50 relative">
       {/* Full-width frosted background */}
       <div
         className={cn(

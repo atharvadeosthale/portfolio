@@ -28,7 +28,7 @@ export default function BlogPage() {
     <Container>
       <Navbar />
 
-      <main className="py-10 md:py-16">
+      <main className="pt-4 pb-10 md:pt-6 md:pb-16">
         {/* Header */}
         <div className="mb-12">
           <Link
@@ -41,10 +41,6 @@ export default function BlogPage() {
             overline="Blog"
             title="Thoughts & Tutorials"
           />
-          <p className="text-muted-foreground mt-4 max-w-2xl">
-            Sharing my experiences in development, DevRel, and everything I
-            learn along the way.
-          </p>
         </div>
 
         {posts.length === 0 ? (

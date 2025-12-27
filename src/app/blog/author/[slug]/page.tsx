@@ -58,7 +58,7 @@ export default async function AuthorPage({
     <Container>
       <Navbar />
 
-      <main className="py-10 md:py-16">
+      <main className="pt-4 pb-10 md:pt-6 md:pb-16">
         {/* Back Link */}
         <Link
           href="/blog"
@@ -75,7 +75,7 @@ export default async function AuthorPage({
             alt={author.name}
             className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover ring-4 ring-border mb-6"
           />
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 display">
             {author.name}
           </h1>
           <p className="text-muted-foreground text-lg max-w-xl mb-2">

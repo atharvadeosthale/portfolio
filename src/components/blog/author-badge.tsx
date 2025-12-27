@@ -19,7 +19,7 @@ export function AuthorBadge({
 }: AuthorBadgeProps) {
   const sizeClasses = {
     sm: "h-6 w-6",
-    md: "h-8 w-8",
+    md: "h-9 w-9",
     lg: "h-12 w-12",
   };
 
@@ -30,33 +30,50 @@ export function AuthorBadge({
   };
 
   const content = (
-    <div className={cn("flex items-center gap-3", linked && "hover:opacity-80 transition-opacity", className)}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={author.image}
-        alt={author.name}
-        className={cn(
-          "rounded-full object-cover ring-2 ring-border",
-          sizeClasses[size]
+    <div
+      className={cn(
+        "flex items-center gap-3",
+        linked && "group cursor-pointer",
+        className
+      )}
+    >
+      <div className="relative">
+        {/* Glow effect on hover */}
+        {linked && (
+          <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         )}
-      />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={author.image}
+          alt={author.name}
+          className={cn(
+            "relative rounded-full object-cover ring-2 ring-border transition-all duration-300",
+            linked && "group-hover:ring-primary/50",
+            sizeClasses[size]
+          )}
+        />
+      </div>
       <div className="flex flex-col">
-        <span className={cn("font-medium", textClasses[size])}>
+        <span
+          className={cn(
+            "font-medium transition-colors duration-300",
+            linked && "group-hover:text-primary",
+            textClasses[size]
+          )}
+        >
           {author.name}
         </span>
         {showBio && (
-          <span className="text-xs text-muted-foreground">{author.bio}</span>
+          <span className="text-xs text-muted-foreground line-clamp-1">
+            {author.bio}
+          </span>
         )}
       </div>
     </div>
   );
 
   if (linked) {
-    return (
-      <Link href={`/blog/author/${author.slug}`}>
-        {content}
-      </Link>
-    );
+    return <Link href={`/blog/author/${author.slug}`}>{content}</Link>;
   }
 
   return content;

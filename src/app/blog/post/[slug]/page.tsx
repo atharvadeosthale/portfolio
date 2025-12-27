@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { AuthorBadge } from "@/components/blog/author-badge";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { mdxComponents } from "@/components/blog/mdx-components";
+import { CodeCopyInjector } from "@/components/blog/code-copy-injector";
 import Navbar from "@/components/navbar";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
@@ -154,6 +155,7 @@ export default async function BlogPostPage({
             )}
 
             <div>
+              <CodeCopyInjector />
               <MDXRemote
                 source={post.content}
                 components={mdxComponents}

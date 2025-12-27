@@ -27,12 +27,7 @@ const nextConfig = {
         destination: "https://instagram.com/atharvadeosthale",
         permanent: true,
       },
-      {
-        source: "/blog",
-        destination: "https://blog.atharva.codes",
-        permanent: true,
-      },
-      {
+            {
         source: "/examples",
         destination: "https://examples.atharva.codes",
         permanent: true,

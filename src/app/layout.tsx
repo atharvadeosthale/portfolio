@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BackgroundGrid } from "@/components/ui/BackgroundGrid";
+import { Databuddy } from "@databuddy/sdk/react";
 
 const inter = Inter({ subsets: ["latin"] });
 const display = Space_Grotesk({
@@ -45,13 +46,14 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
           <BackgroundGrid />
           {children}
         </ThemeProvider>
+        <Databuddy clientId="e9581b81-6a5a-4dac-b71c-5e51d3314e85" />
       </body>
     </html>
   );

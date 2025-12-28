@@ -6,16 +6,29 @@ import { BlogCard } from "@/components/blog/blog-card";
 import { getAllPosts } from "@/lib/posts";
 import Navbar from "@/components/navbar";
 import Link from "next/link";
+import { SocialRail } from "@/components/ui/SocialRail";
 
 export const metadata: Metadata = {
   title: "Blog — Atharva Deosthale",
   description:
     "Thoughts on development, DevRel, and building things on the web.",
+  alternates: {
+    canonical: "https://atharva.codes/blog",
+  },
   openGraph: {
     title: "Blog — Atharva Deosthale",
     description:
       "Thoughts on development, DevRel, and building things on the web.",
+    url: "https://atharva.codes/blog",
+    siteName: "Atharva Deosthale",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Blog — Atharva Deosthale",
+    description:
+      "Thoughts on development, DevRel, and building things on the web.",
+    creator: "@atharvabuilds",
   },
 };
 
@@ -25,8 +38,10 @@ export default function BlogPage() {
   const otherPosts = posts.filter((post) => !post.featured);
 
   return (
-    <Container>
-      <Navbar />
+    <>
+      <SocialRail />
+      <Container>
+        <Navbar />
 
       <main className="pt-4 pb-10 md:pt-6 md:pb-16">
         {/* Header */}
@@ -86,15 +101,10 @@ export default function BlogPage() {
             >
               Home
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              RSS
-            </Link>
           </div>
         </div>
       </footer>
-    </Container>
+      </Container>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 ---
 name: "Atharva Deosthale"
-image: "/pfp.jpeg"
+image: "/authors/atharva.jpeg"
 bio: "Developer, DevRel, Content Creator. I build things and share how."
 ---

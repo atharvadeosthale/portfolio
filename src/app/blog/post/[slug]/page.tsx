@@ -9,6 +9,7 @@ import { TableOfContents } from "@/components/blog/table-of-contents";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { CodeCopyInjector } from "@/components/blog/code-copy-injector";
 import Navbar from "@/components/navbar";
+import { SocialRail } from "@/components/ui/SocialRail";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -34,21 +35,30 @@ export async function generateMetadata({
     };
   }
 
+  const postUrl = `https://atharva.codes/blog/post/${slug}`;
+
   return {
     title: `${post.title} — Atharva Deosthale`,
     description: post.description,
+    authors: post.author ? [{ name: post.author.name }] : undefined,
+    alternates: {
+      canonical: postUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
+      url: postUrl,
+      siteName: "Atharva Deosthale",
       type: "article",
       publishedTime: post.date.toISOString(),
       authors: post.author ? [post.author.name] : undefined,
-      images: post.cover ? [post.cover] : undefined,
+      images: post.cover ? [{ url: post.cover, width: 1920, height: 1080, alt: post.title }] : undefined,
     },
     twitter: {
-      card: "summary_large_image",
+      card: post.cover ? "summary_large_image" : "summary",
       title: post.title,
       description: post.description,
+      creator: "@atharvabuilds",
       images: post.cover ? [post.cover] : undefined,
     },
   };
@@ -68,8 +78,39 @@ export default async function BlogPostPage({
 
   const toc = extractTableOfContents(post.content);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: post.cover,
+    datePublished: post.date.toISOString(),
+    author: post.author
+      ? {
+          "@type": "Person",
+          name: post.author.name,
+          image: post.author.image,
+        }
+      : undefined,
+    publisher: {
+      "@type": "Person",
+      name: "Atharva Deosthale",
+      url: "https://atharva.codes",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://atharva.codes/blog/post/${slug}`,
+    },
+  };
+
   return (
-    <Container>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SocialRail />
+      <Container>
       <Navbar />
 
       <main className="pt-4 pb-10 md:pt-6 md:pb-16">
@@ -227,5 +268,6 @@ export default async function BlogPostPage({
         </div>
       </footer>
     </Container>
+    </>
   );
 }

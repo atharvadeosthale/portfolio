@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@databuddy/sdk':
+        specifier: ^2.3.21
+        version: 2.3.21(react@18.2.0)
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.0.6
         version: 2.0.6(@types/react-dom@18.2.18)(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -127,6 +130,29 @@ packages:
   '@babel/runtime@7.23.8':
     resolution: {integrity: sha512-Y7KbAP984rn1VGMbGqKmBLio9V7y5Je9GvU4rQPCPinCyNfUcToxIXl06d59URp/F3LwinvODxab5N/G6qggkw==}
     engines: {node: '>=6.9.0'}
+
+  '@databuddy/sdk@2.3.21':
+    resolution: {integrity: sha512-BjGLy9+4mz9Z0872kkl6rlc3l6VNJPPSTM1BhMg37QnDa0tUUS7kw7V54Y6NRC/ayjEJjrIYHJP355nPKIfy5Q==}
+    peerDependencies:
+      '@ai-sdk/provider': ^2.0.0
+      ai: ^5.0.51
+      msw: ^2.11.5
+      react: '>=18'
+      tokenlens: ^2.0.0-alpha.3
+      vue: '>=3'
+    peerDependenciesMeta:
+      '@ai-sdk/provider':
+        optional: true
+      ai:
+        optional: true
+      msw:
+        optional: true
+      react:
+        optional: true
+      tokenlens:
+        optional: true
+      vue:
+        optional: true
 
   '@eslint-community/eslint-utils@4.4.0':
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -2501,6 +2527,10 @@ snapshots:
   '@babel/runtime@7.23.8':
     dependencies:
       regenerator-runtime: 0.14.1
+
+  '@databuddy/sdk@2.3.21(react@18.2.0)':
+    optionalDependencies:
+      react: 18.2.0
 
   '@eslint-community/eslint-utils@4.4.0(eslint@8.56.0)':
     dependencies:

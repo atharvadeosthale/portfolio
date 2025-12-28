@@ -6,6 +6,7 @@ import { getPostsByAuthor } from "@/lib/posts";
 import { Container } from "@/components/ui/Container";
 import { BlogCard } from "@/components/blog/blog-card";
 import Navbar from "@/components/navbar";
+import { SocialRail } from "@/components/ui/SocialRail";
 
 // Generate static paths for all authors
 export async function generateStaticParams() {
@@ -28,13 +29,27 @@ export async function generateMetadata({
     };
   }
 
+  const authorUrl = `https://atharva.codes/blog/author/${slug}`;
+
   return {
     title: `${author.name} — Blog`,
     description: author.bio,
+    alternates: {
+      canonical: authorUrl,
+    },
     openGraph: {
       title: `${author.name} — Blog`,
       description: author.bio,
+      url: authorUrl,
+      siteName: "Atharva Deosthale",
       type: "profile",
+      images: author.image ? [{ url: author.image, width: 400, height: 400, alt: author.name }] : undefined,
+    },
+    twitter: {
+      card: "summary",
+      title: `${author.name} — Blog`,
+      description: author.bio,
+      creator: "@atharvabuilds",
       images: author.image ? [author.image] : undefined,
     },
   };
@@ -55,8 +70,10 @@ export default async function AuthorPage({
   const posts = getPostsByAuthor(slug);
 
   return (
-    <Container>
-      <Navbar />
+    <>
+      <SocialRail />
+      <Container>
+        <Navbar />
 
       <main className="pt-4 pb-10 md:pt-6 md:pb-16">
         {/* Back Link */}
@@ -122,6 +139,7 @@ export default async function AuthorPage({
           </div>
         </div>
       </footer>
-    </Container>
+      </Container>
+    </>
   );
 }

@@ -19,8 +19,8 @@ export function AuthorBadge({
 }: AuthorBadgeProps) {
   const sizeClasses = {
     sm: "h-6 w-6",
-    md: "h-9 w-9",
-    lg: "h-12 w-12",
+    md: "h-10 w-10",
+    lg: "h-14 w-14",
   };
 
   const textClasses = {
@@ -37,22 +37,15 @@ export function AuthorBadge({
         className
       )}
     >
-      <div className="relative">
-        {/* Glow effect on hover */}
-        {linked && (
-          <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={author.image}
+        alt={author.name}
+        className={cn(
+          "object-cover transition-all duration-300",
+          sizeClasses[size]
         )}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={author.image}
-          alt={author.name}
-          className={cn(
-            "relative rounded-full object-cover ring-2 ring-border transition-all duration-300",
-            linked && "group-hover:ring-primary/50",
-            sizeClasses[size]
-          )}
-        />
-      </div>
+      />
       <div className="flex flex-col">
         <span
           className={cn(

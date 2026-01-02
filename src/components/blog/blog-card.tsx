@@ -11,10 +11,10 @@ interface BlogCardProps {
 
 export function BlogCard({ post, className }: BlogCardProps) {
   return (
-    <Link href={`/blog/post/${post.slug}`} className="block group">
+    <Link href={`/blog/post/${post.slug}`} className="block group h-full">
       <article
         className={cn(
-          "relative border-2 border-foreground/20 overflow-hidden",
+          "relative border-2 border-foreground/20 overflow-hidden h-full flex flex-col",
           "hover:border-foreground transition-all duration-300",
           "hover:-translate-y-1 hover:shadow-lg",
           className
@@ -39,7 +39,7 @@ export function BlogCard({ post, className }: BlogCardProps) {
           </div>
         </div>
 
-        <div className="p-6 bg-card">
+        <div className="p-6 bg-card flex-1 flex flex-col">
           {/* Author and Date */}
           <div className="flex items-center gap-3 mb-4">
             {post.author && (
@@ -56,12 +56,12 @@ export function BlogCard({ post, className }: BlogCardProps) {
           </h3>
 
           {/* Description */}
-          <p className="text-sm text-muted-foreground line-clamp-2 mb-6">
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-6 flex-1">
             {post.description}
           </p>
 
           {/* Read more link */}
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors mt-auto">
             Read more
             <FaArrowRight className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
           </div>

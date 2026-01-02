@@ -1,9 +1,9 @@
 ---
 title: My goals for 2026
 date: 01-01-2026
-cover: /blog/first/cover.png
+cover: /blog/2026-goals/cover.png
 author: atharva
-description: "My goals for 2026 across my work and content creation."
+description: "Recapping 2025, what went wrong, and my goals for 2026 keeping the previous learnings in mind."
 featured: false
 ---
 

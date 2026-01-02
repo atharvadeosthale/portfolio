@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { AuthorBadge } from "./author-badge";
 import type { PostMeta } from "@/lib/posts";
+import { FaArrowRight } from "react-icons/fa6";
 
 interface FeaturedPostProps {
   post: PostMeta;
@@ -13,70 +14,66 @@ export function FeaturedPost({ post, className }: FeaturedPostProps) {
     <Link href={`/blog/post/${post.slug}`} className="block group">
       <article
         className={cn(
-          "relative rounded-2xl overflow-hidden",
-          "bg-gradient-to-br from-primary/5 via-transparent to-accent/5",
-          "ring-1 ring-border/50 hover:ring-primary/30",
-          "shadow-xl hover:shadow-2xl hover:shadow-primary/5",
-          "transition-all duration-500",
+          "relative border-2 border-foreground overflow-hidden",
+          "hover:border-primary transition-all duration-300",
+          "hover:-translate-y-1 hover:shadow-xl",
           className
         )}
       >
-        {/* Gradient border glow effect */}
-        <div className="absolute -inset-[1px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm" />
+        <div className="grid md:grid-cols-[1.2fr,1fr]">
+          {/* Cover Image */}
+          <div className="relative aspect-video md:aspect-auto overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={post.cover}
+              alt={post.title}
+              className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-primary/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
 
-        {/* Cover Image with Gradient Overlay */}
-        <div className="relative aspect-video overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={post.cover}
-            alt={post.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-          />
-          {/* Multi-layer gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Content */}
+          <div className="p-8 md:p-10 flex flex-col justify-between bg-card">
+            <div>
+              {/* Featured Badge */}
+              <div className="mb-6">
+                <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-primary">
+                  <span className="w-2 h-2 bg-primary animate-pulse-slow" />
+                  Featured
+                </span>
+              </div>
 
-          {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
-            {/* Featured Badge */}
-            <div className="mb-4">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary backdrop-blur-md ring-1 ring-primary/20 shadow-lg shadow-primary/5">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                Featured Post
-              </span>
+              {/* Title */}
+              <h2 className="font-serif text-3xl md:text-4xl leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                {post.title}
+              </h2>
+
+              {/* Description */}
+              <p className="text-muted-foreground leading-relaxed line-clamp-3 mb-6">
+                {post.description}
+              </p>
             </div>
 
-            {/* Title */}
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 group-hover:text-primary transition-colors duration-300 display">
-              {post.title}
-            </h2>
+            <div>
+              {/* Meta */}
+              <div className="flex flex-wrap items-center gap-4 mb-6 pb-6 border-b-2 border-foreground/10">
+                {post.author && (
+                  <AuthorBadge author={post.author} size="md" linked={false} />
+                )}
+                <span className="font-mono text-xs text-muted-foreground">
+                  {post.dateFormatted}
+                </span>
+                <span className="font-mono text-xs text-muted-foreground">
+                  {post.readingTime}
+                </span>
+              </div>
 
-            {/* Description */}
-            <p className="text-muted-foreground text-sm md:text-base max-w-2xl mb-6 line-clamp-2">
-              {post.description}
-            </p>
-
-            {/* Meta */}
-            <div className="flex flex-wrap items-center gap-4">
-              {post.author && <AuthorBadge author={post.author} size="md" linked={false} />}
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-              <time className="text-sm text-muted-foreground">
-                {post.dateFormatted}
-              </time>
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-              <span className="text-sm text-muted-foreground">
-                {post.readingTime}
-              </span>
-            </div>
-
-            {/* Read button */}
-            <div className="mt-6">
-              <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium text-sm shadow-lg shadow-primary/25 group-hover:shadow-xl group-hover:shadow-primary/30 transition-all duration-300 group-hover:gap-3">
+              {/* Read button */}
+              <div className="flex items-center gap-2 font-mono text-sm uppercase tracking-wider group-hover:text-primary transition-colors">
                 Read Article
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
+                <FaArrowRight className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
+              </div>
             </div>
           </div>
         </div>

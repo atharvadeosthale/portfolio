@@ -37,19 +37,11 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
   return (
     <nav
       className={cn(
-        "relative rounded-xl overflow-hidden",
-        "bg-secondary/5 ring-1 ring-border/50",
-        "p-5",
+        "border-2 border-foreground p-6",
         className
       )}
     >
-      {/* Gradient accent */}
-      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-primary/50 to-transparent" />
-
-      <h4 className="text-sm font-semibold mb-4 text-foreground flex items-center gap-2">
-        <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-        </svg>
+      <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 pb-4 border-b-2 border-foreground/10">
         On this page
       </h4>
       <ul className="space-y-1">
@@ -61,10 +53,10 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
             <a
               href={`#${item.id}`}
               className={cn(
-                "block text-sm py-1.5 px-3 -ml-3 rounded-lg transition-all duration-200",
+                "block text-sm py-2 transition-all duration-200 border-l-2 pl-4 -ml-[2px]",
                 activeId === item.id
-                  ? "text-primary bg-primary/10 font-medium"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                  ? "text-primary border-primary font-medium"
+                  : "text-muted-foreground hover:text-foreground border-transparent hover:border-foreground/30"
               )}
             >
               {item.title}

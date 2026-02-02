@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import AnonymousMessage from "@/components/anonymous-message";
 import Link from "next/link";
 import {
   FaLinkedin,
@@ -372,6 +373,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AnonymousMessage />
 
       {/* Footer */}
       <footer className="py-8 border-t-2 border-foreground">

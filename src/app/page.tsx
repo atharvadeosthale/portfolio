@@ -69,7 +69,8 @@ export default function Home() {
                 <br />
                 <span className="text-primary">content</span> around
                 <br />
-                the web<span className="text-primary">.</span>
+                the web and <span className="text-primary">AI</span>
+                <span className="text-primary">.</span>
               </h1>
 
               {/* Description */}
@@ -175,11 +176,14 @@ export default function Home() {
                 communities.
               </p>
               <p className="text-muted-foreground">
-                I&apos;ve crafted AI workflows at{" "}
-                <span className="text-foreground font-medium">MyShell.ai</span>,
-                empowered blockchain developers at{" "}
-                <span className="text-foreground font-medium">thirdweb</span>,
-                and helped teams create amazing educational content.
+                I work at{" "}
+                <span className="text-foreground font-medium">Appwrite</span> as
+                a{" "}
+                <span className="text-foreground font-medium">
+                  Developer Advocate
+                </span>{" "}
+                to help with high-quality documentation and technical content. I use AI-native methodologies like setting up
+                automation that speed up DevRel processes by an estimated 6x.
               </p>
               <p className="text-muted-foreground">
                 When I&apos;m not coding, I&apos;m exploring new technologies,

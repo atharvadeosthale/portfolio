@@ -1,20 +1,27 @@
 export const experiences = [
   {
     company: "Appwrite",
-    role: "Developer Relations (Video Content)",
+    role: "Developer Advocate",
     logo: "/appwrite.png",
     duration: "May 2025 - Present",
     description: (
-      <p>
-        Currently working as a Developer Relations Engineer at Appwrite
-        facilitating getting videos to the final line and getting them
-        published. I&apos;m working closely with Dennis Ivy and learning from
-        the best in the game when it comes to technical video content. Other
-        than that, I&apos;m also working on the documentation and creating
-        content across the YouTube channel and blog. Other responsibilities
-        include repurposing long form content into short form and writing
-        technical articles.
-      </p>
+      <>
+        <p>
+          Currently working as a Developer Advocate for Appwrite, working on the
+          following areas:
+        </p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>High quality documentation</li>
+          <li>Blog posts</li>
+          <li>Assistance with product launches</li>
+          <li>Community engagement and support</li>
+          <li>
+            Taking the lead to bringing AI-native automation to speed up DevRel
+            processes
+          </li>
+          <li>YouTube videos (recording, editing and publishing)</li>
+        </ul>
+      </>
     ),
   },
   {

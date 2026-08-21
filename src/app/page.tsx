@@ -117,7 +117,7 @@ export default function Home() {
 
               <div className="relative">
                 <img
-                  src="/pfp.jpeg"
+                  src="/hero.png"
                   alt="Atharva Deosthale"
                   className="w-full aspect-[4/5] object-cover transition-all duration-700 hover:scale-[1.02]"
                 />

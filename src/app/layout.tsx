@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Atharva Deosthale — Portfolio",
   description:
     "Developer • DevRel • Content Creator. I build things and share how.",
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: "/icon.png" },
   openGraph: {
     title: "Atharva Deosthale — Portfolio",
     description:

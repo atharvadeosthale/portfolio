@@ -14,7 +14,10 @@ export default function ThemeToggler() {
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger className="w-9 h-9 flex items-center justify-center border-2 border-foreground hover:bg-foreground hover:text-background transition-colors focus:outline-none">
+      <DropdownMenuTrigger
+        aria-label="Toggle theme"
+        className="w-9 h-9 flex items-center justify-center border-2 border-foreground hover:bg-foreground hover:text-background transition-colors focus:outline-none"
+      >
         {resolvedTheme === "light" ? (
           <SunIcon className="w-4 h-4" />
         ) : (

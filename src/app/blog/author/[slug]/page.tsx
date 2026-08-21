@@ -27,7 +27,7 @@ export async function generateMetadata({
     };
   }
 
-  const authorUrl = `https://atharva.codes/blog/author/${slug}`;
+  const authorUrl = `https://www.atharva.codes/blog/author/${slug}`;
 
   return {
     title: `${author.name} — Blog`,

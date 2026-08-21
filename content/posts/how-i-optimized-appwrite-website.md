@@ -95,7 +95,7 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
 
 Because the package is now needed at runtime instead of build time, I also moved it from `devDependencies` to `dependencies` so it survives a production install. The results:
 
-|                          | Before   | After   |
+| Metric                   | Before   | After   |
 | ------------------------ | -------- | ------- |
 | Server chunks            | 49,123   | 3,194   |
 | Peak build RSS           | 7.0 GB   | 5.6 GB  |

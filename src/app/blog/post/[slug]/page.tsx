@@ -5,8 +5,10 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import {
   getPostBySlug,
   getAllPostSlugs,
+  getAllPosts,
   extractTableOfContents,
 } from "@/lib/posts";
+import { BlogCard } from "@/components/blog/blog-card";
 import { AuthorBadge } from "@/components/blog/author-badge";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { mdxComponents } from "@/components/blog/mdx-components";
@@ -37,7 +39,7 @@ export async function generateMetadata({
     };
   }
 
-  const postUrl = `https://atharva.codes/blog/post/${slug}`;
+  const postUrl = `https://www.atharva.codes/blog/post/${slug}`;
 
   return {
     title: `${post.title} — Atharva Deosthale`,
@@ -82,6 +84,10 @@ export default async function BlogPostPage({
 
   const toc = extractTableOfContents(post.content);
 
+  const recentPosts = getAllPosts()
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -99,11 +105,11 @@ export default async function BlogPostPage({
     publisher: {
       "@type": "Person",
       name: "Atharva Deosthale",
-      url: "https://atharva.codes",
+      url: "https://www.atharva.codes",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://atharva.codes/blog/post/${slug}`,
+      "@id": `https://www.atharva.codes/blog/post/${slug}`,
     },
   };
 
@@ -184,6 +190,9 @@ export default async function BlogPostPage({
                 <img
                   src={post.cover}
                   alt={post.title}
+                  width={1920}
+                  height={1080}
+                  fetchPriority="high"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -247,6 +256,8 @@ export default async function BlogPostPage({
                       <img
                         src={post.author.image}
                         alt={post.author.name}
+                        width={80}
+                        height={80}
                         className="w-20 h-20 object-cover"
                       />
                       <div className="text-center sm:text-left">
@@ -270,6 +281,22 @@ export default async function BlogPostPage({
             </div>
           </div>
         </div>
+
+        {/* Recent Posts */}
+        {recentPosts.length > 0 && (
+          <section className="py-16 md:py-24 border-t-2 border-foreground">
+            <div className="max-w-[1200px] mx-auto px-6">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 block">
+                Recent Articles
+              </span>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {recentPosts.map((p) => (
+                  <BlogCard key={p.slug} post={p} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Footer */}
         <footer className="py-8 border-t-2 border-foreground">

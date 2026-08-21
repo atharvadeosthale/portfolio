@@ -41,9 +41,9 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
         className
       )}
     >
-      <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 pb-4 border-b-2 border-foreground/10">
+      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 pb-4 border-b-2 border-foreground/10">
         On this page
-      </h4>
+      </p>
       <ul className="space-y-1">
         {items.map((item) => (
           <li

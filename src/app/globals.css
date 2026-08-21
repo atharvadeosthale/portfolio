@@ -15,7 +15,7 @@
     --popover-foreground: 0 0% 8%;
 
     /* Vermillion accent */
-    --primary: 8 85% 56%;
+    --primary: 8 85% 46%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 45 15% 88%;
@@ -50,7 +50,7 @@
 
     /* Vermillion accent */
     --primary: 8 85% 58%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 8%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 45 20% 92%;

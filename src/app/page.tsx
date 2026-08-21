@@ -9,12 +9,6 @@ import {
 } from "react-icons/fa6";
 import { experiences } from "../../constants/experiences";
 
-export const metadata = {
-  title: "Atharva Deosthale - Portfolio",
-  description:
-    "Hello, I'm Atharva Deosthale. I code and create content about it for a living. Feel free to reach out to me on my socials or email!",
-};
-
 const socialLinks = [
   {
     href: "https://youtube.com/AtharvaDeosthale",
@@ -117,8 +111,11 @@ export default function Home() {
 
               <div className="relative">
                 <img
-                  src="/hero.png"
+                  src="/hero.webp"
                   alt="Atharva Deosthale"
+                  width={466}
+                  height={466}
+                  fetchPriority="high"
                   className="w-full aspect-[4/5] object-cover transition-all duration-700 hover:scale-[1.02]"
                 />
                 {/* Overlay accent */}
@@ -202,15 +199,17 @@ export default function Home() {
                 </span>
                 <div className="flex flex-wrap items-center gap-4 mt-4">
                   {[
-                    { src: "/appwrite.png", alt: "Appwrite" },
-                    { src: "/myshell.png", alt: "MyShell.ai" },
-                    { src: "/thirdweb.jpeg", alt: "thirdweb" },
-                    { src: "/logrocket.jpeg", alt: "LogRocket" },
+                    { src: "/appwrite.png", alt: "Appwrite", size: 280 },
+                    { src: "/myshell.png", alt: "MyShell.ai", size: 320 },
+                    { src: "/thirdweb.jpeg", alt: "thirdweb", size: 225 },
+                    { src: "/logrocket.jpeg", alt: "LogRocket", size: 225 },
                   ].map((company) => (
                     <img
                       key={company.alt}
                       src={company.src}
                       alt={company.alt}
+                      width={company.size}
+                      height={company.size}
                       className="h-8 w-auto opacity-80 hover:opacity-100 transition-all"
                     />
                   ))}

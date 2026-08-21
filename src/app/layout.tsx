@@ -24,24 +24,26 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.atharva.codes"),
   title: "Atharva Deosthale — Portfolio",
   description:
-    "Developer • DevRel • Content Creator. I build things and share how.",
+    "Hello, I'm Atharva Deosthale. I code and create content about it for a living. Feel free to reach out to me on my socials or email!",
   icons: { icon: "/icon.png" },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Atharva Deosthale — Portfolio",
     description:
-      "Developer • DevRel • Content Creator. I build things and share how.",
-    url: "https://atharva.codes",
+      "Hello, I'm Atharva Deosthale. I code and create content about it for a living. Feel free to reach out to me on my socials or email!",
+    url: "https://www.atharva.codes",
     siteName: "Atharva Deosthale",
-    images: [{ url: "/pfp.jpeg", width: 1200, height: 630, alt: "Atharva" }],
+    images: [{ url: "/pfp.jpeg", width: 1024, height: 1024, alt: "Atharva" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Atharva Deosthale — Portfolio",
     description:
-      "Developer • DevRel • Content Creator. I build things and share how.",
+      "Hello, I'm Atharva Deosthale. I code and create content about it for a living. Feel free to reach out to me on my socials or email!",
     images: ["/pfp.jpeg"],
   },
 };

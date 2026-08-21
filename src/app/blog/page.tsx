@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Thoughts on development, DevRel, and building things on the web.",
   alternates: {
-    canonical: "https://atharva.codes/blog",
+    canonical: "https://www.atharva.codes/blog",
   },
   openGraph: {
     title: "Blog — Atharva Deosthale",
     description:
       "Thoughts on development, DevRel, and building things on the web.",
-    url: "https://atharva.codes/blog",
+    url: "https://www.atharva.codes/blog",
     siteName: "Atharva Deosthale",
     type: "website",
   },

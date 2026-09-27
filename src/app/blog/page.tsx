@@ -50,16 +50,6 @@ export default function BlogPage() {
             <h1 className="blog-title font-display" data-reveal>
               Writ<span className="blog-title-outline">ing</span>
             </h1>
-            <p
-              className="mt-8 max-w-[340px] text-[17px] leading-relaxed text-muted-foreground md:ml-auto"
-              data-reveal
-            >
-              Deep dives into development, DevRel insights, and everything I
-              learn along the way.
-              <span className="mt-4 block text-[13px] font-medium text-foreground">
-                {posts.length} {posts.length === 1 ? "post" : "posts"}
-              </span>
-            </p>
           </div>
         </section>
 

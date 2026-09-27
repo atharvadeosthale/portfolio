@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
-import { PostCard } from "@/components/blog/post-card";
+import { FeaturedPost } from "@/components/blog/featured-post";
+import { PostIndex } from "@/components/blog/post-index";
 import { BackLink } from "@/components/blog/page-header";
 import Nav from "@/components/site/nav";
 import Contact from "@/components/site/contact";
@@ -42,23 +43,28 @@ export default function BlogPage() {
       <main className="relative overflow-x-clip">
         <div className="page-glow" aria-hidden />
 
-        <section className="shell pb-16 pt-32 md:pb-24 md:pt-44">
+        <section className="shell pb-14 pt-32 md:pb-20 md:pt-44">
           <div data-reveal>
             <BackLink href="/" label="Home" />
           </div>
-          <div className="mt-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-            <h1 className="font-display text-[clamp(96px,19vw,300px)]" data-reveal>
-              Writ<span className="text-brand-text">ing</span>
+
+          <div className="blog-head">
+            <h1 className="blog-title font-display" data-reveal>
+              Writ<span className="blog-title-outline">ing</span>
             </h1>
-            <p
-              className="max-w-[340px] pb-4 text-[17px] leading-relaxed text-muted-foreground"
-              data-reveal
-            >
+            <a href="/feed.xml" className="blog-chip blog-chip--rss">
+              RSS
+            </a>
+            <span className="blog-chip blog-chip--count">
+              {posts.length} {posts.length === 1 ? "post" : "posts"}
+            </span>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-6 border-t border-ink/10 pt-6 md:flex-row md:items-start md:justify-between" data-reveal>
+            <p className="kicker">Blog</p>
+            <p className="max-w-[420px] text-[17px] leading-relaxed text-muted-foreground">
               Deep dives into development, DevRel insights, and everything I
               learn along the way.
-              <span className="mt-4 block text-[13px] font-medium text-foreground">
-                {posts.length} {posts.length === 1 ? "post" : "posts"}
-              </span>
             </p>
           </div>
         </section>
@@ -70,12 +76,24 @@ export default function BlogPage() {
             </div>
           ) : (
             <>
-              <PostCard post={featured} large className="lg:max-w-none" />
+              <FeaturedPost post={featured} others={rest} />
               {rest.length > 0 && (
-                <div className="mt-16 grid gap-x-6 gap-y-14 border-t border-ink/10 pt-16 sm:grid-cols-2 lg:grid-cols-3">
-                  {rest.map((post, i) => (
-                    <PostCard key={post.slug} post={post} delay={(i % 3) * 80} />
-                  ))}
+                <div className="mt-20 md:mt-28">
+                  <div className="mb-6 flex items-end justify-between gap-6" data-reveal>
+                    <h2 className="font-display text-[clamp(48px,7vw,104px)]">
+                      More <span className="font-serif font-normal normal-case italic tracking-[-0.04em]">posts</span>
+                    </h2>
+                  </div>
+                  <PostIndex
+                    start={2}
+                    posts={rest.map(({ slug, title, cover, dateFormatted, readingTime }) => ({
+                      slug,
+                      title,
+                      cover,
+                      dateFormatted,
+                      readingTime,
+                    }))}
+                  />
                 </div>
               )}
             </>

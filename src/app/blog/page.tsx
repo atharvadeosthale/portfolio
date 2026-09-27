@@ -19,9 +19,11 @@ export const metadata: Metadata = {
     url: "https://www.atharva.codes/blog",
     siteName: "Atharva Deosthale",
     type: "website",
+    images: [{ url: "/og.jpg", width: 2400, height: 1260, alt: "Atharva Deosthale" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/og.jpg"],
     title: "Blog — Atharva Deosthale",
     description:
       "Thoughts on development, DevRel, and building things on the web.",

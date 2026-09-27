@@ -51,14 +51,21 @@ export const metadata: Metadata = {
     description,
     url: "https://www.atharva.codes",
     siteName: "Atharva Deosthale",
-    images: [{ url: "/pfp.jpeg", width: 1024, height: 1024, alt: "Atharva" }],
+    images: [
+      {
+        url: "/og.jpg",
+        width: 2400,
+        height: 1260,
+        alt: "Atharva Deosthale, Developer Advocate at Appwrite",
+      },
+    ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Atharva Deosthale — Portfolio",
     description,
-    images: ["/pfp.jpeg"],
+    images: ["/og.jpg"],
   },
 };
 

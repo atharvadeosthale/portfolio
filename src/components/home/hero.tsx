@@ -68,10 +68,6 @@ export default function Hero() {
       </div>
 
       <div className="hero-top">
-        <div className="hero-status">
-          <span className="hero-status-dot" />
-          Open to collaborations
-        </div>
         <LocalTime className="hero-time" />
       </div>
 

@@ -759,31 +759,6 @@ html.js [data-reveal].is-in {
   }
 }
 
-.hero-top {
-  position: absolute;
-  z-index: 5;
-  top: 92px;
-  left: var(--edge);
-  right: var(--edge);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  animation: fade-up 1s var(--ease-out) 1.1s both;
-}
-
-.hero-time {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 13px;
-  line-height: 1.35;
-  font-weight: 500;
-}
-
-.hero-time span:first-child {
-  color: hsl(var(--stone));
-}
-
 .hero-bottom {
   position: absolute;
   z-index: 5;
@@ -940,10 +915,6 @@ html.js [data-reveal].is-in {
 
   .hero-hey > span {
     position: static;
-  }
-
-  .hero-top {
-    top: 76px;
   }
 
   .hero-chip {

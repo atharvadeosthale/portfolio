@@ -1,7 +1,6 @@
 import { FaArrowRight } from "react-icons/fa6";
 import { socialLinks } from "@/lib/site";
 import HeroMotion from "./hero-motion";
-import LocalTime from "./local-time";
 import Seal from "@/components/site/seal";
 
 const NAME = "ATHARVA";
@@ -65,10 +64,6 @@ export default function Hero() {
         <span className="hero-chip hero-chip--a">DevRel</span>
         <span className="hero-chip hero-chip--b">Videos</span>
         <span className="hero-chip hero-chip--c">Docs &amp; blogs</span>
-      </div>
-
-      <div className="hero-top">
-        <LocalTime className="hero-time" />
       </div>
 
       <div className="hero-bottom">

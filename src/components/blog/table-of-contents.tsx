@@ -37,14 +37,14 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
   return (
     <nav
       className={cn(
-        "border-2 border-foreground p-6",
+        "rounded-[22px] bg-paper-2 p-5 lg:bg-transparent lg:p-0",
         className
       )}
     >
-      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 pb-4 border-b-2 border-foreground/10">
+      <p className="kicker mb-4">
         On this page
       </p>
-      <ul className="space-y-1">
+      <ul>
         {items.map((item) => (
           <li
             key={item.id}
@@ -53,10 +53,10 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
             <a
               href={`#${item.id}`}
               className={cn(
-                "block text-sm py-2 transition-all duration-200 border-l-2 pl-4 -ml-[2px]",
+                "block text-[14px] leading-snug py-1.5 transition-colors duration-200 border-l pl-4",
                 activeId === item.id
-                  ? "text-primary border-primary font-medium"
-                  : "text-muted-foreground hover:text-foreground border-transparent hover:border-foreground/30"
+                  ? "text-foreground border-brand font-medium"
+                  : "text-muted-foreground hover:text-foreground border-ink/10"
               )}
             >
               {item.title}

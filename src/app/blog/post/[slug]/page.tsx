@@ -8,12 +8,14 @@ import {
   getAllPosts,
   extractTableOfContents,
 } from "@/lib/posts";
-import { BlogCard } from "@/components/blog/blog-card";
+import { PostCard } from "@/components/blog/post-card";
 import { AuthorBadge } from "@/components/blog/author-badge";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { CodeCopyInjector } from "@/components/blog/code-copy-injector";
-import Navbar from "@/components/navbar";
+import { BackLink } from "@/components/blog/page-header";
+import Nav from "@/components/site/nav";
+import Contact from "@/components/site/contact";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -120,209 +122,148 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="relative">
-        {/* Noise texture */}
-        <div className="noise" />
+      <Nav />
 
-        <Navbar />
+      <main className="relative overflow-x-clip">
+        <div className="page-glow" aria-hidden />
 
         {/* Header */}
-        <header className="py-16 md:py-24 border-b-2 border-foreground">
-          <div className="max-w-[1200px] mx-auto px-6">
-            {/* Back Link */}
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors mb-8"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M7 16l-4-4m0 0l4-4m-4 4h18"
-                />
-              </svg>
-              Back to Blog
-            </Link>
+        <header className="shell pb-12 pt-32 md:pb-16 md:pt-44">
+          <div data-reveal>
+            <BackLink href="/blog" label="All posts" />
+          </div>
 
-            <div className="max-w-4xl">
-              {/* Reading time badge */}
-              <div className="mb-6">
-                <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider border-2 border-primary text-primary px-3 py-1.5">
-                  {post.readingTime}
-                </span>
-              </div>
+          <div className="mt-10 max-w-[1080px]" data-reveal>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[14px] font-medium text-muted-foreground">
+              <span>{post.dateFormatted}</span>
+              <span className="h-1 w-1 rounded-full bg-ink/30" />
+              <span>{post.readingTime}</span>
+            </div>
 
-              {/* Title */}
-              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-8">
-                {post.title}
-              </h1>
+            <h1 className="mt-6 text-balance text-[clamp(40px,6.4vw,96px)] font-semibold leading-[0.98] tracking-[-0.045em]">
+              {post.title}
+            </h1>
 
-              {/* Description */}
-              <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-3xl">
+            <div className="mt-10 flex flex-col gap-8 border-t border-ink/10 pt-8 md:flex-row md:items-start md:justify-between">
+              <p className="max-w-[640px] text-pretty text-[19px] leading-relaxed text-muted-foreground md:text-[21px]">
                 {post.description}
               </p>
-
-              {/* Meta */}
-              <div className="flex flex-wrap items-center gap-6 pt-8 border-t-2 border-foreground/10">
-                {post.author && (
-                  <AuthorBadge author={post.author} size="md" />
-                )}
-                <span className="font-mono text-sm text-muted-foreground">
-                  {post.dateFormatted}
-                </span>
-              </div>
+              {post.author && <AuthorBadge author={post.author} size="md" className="shrink-0" />}
             </div>
           </div>
         </header>
 
         {/* Cover Image */}
         {post.cover && (
-          <div className="border-b-2 border-foreground">
-            <div className="max-w-[1400px] mx-auto px-6">
-              <div className="relative aspect-video overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={post.cover}
-                  alt={post.title}
-                  width={1920}
-                  height={1080}
-                  fetchPriority="high"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+          <div className="shell" data-reveal="scale">
+            <div className="relative aspect-video overflow-hidden rounded-[clamp(20px,2.6vw,36px)] bg-ink/5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={post.cover}
+                alt={post.title}
+                width={1920}
+                height={1080}
+                fetchPriority="high"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         )}
 
         {/* Content */}
-        <div className="py-16 md:py-24">
-          <div className="max-w-[1200px] mx-auto px-6">
-            <div className="flex gap-16">
-              {/* Table of Contents - Desktop */}
+        <div className="shell py-16 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-[240px_minmax(0,720px)] lg:justify-between xl:grid-cols-[260px_minmax(0,720px)_260px]">
+            {/* Table of Contents - Desktop */}
+            <aside className="hidden lg:block">
               {toc.length > 0 && (
-                <aside className="hidden lg:block w-64 flex-shrink-0">
-                  <div className="sticky top-24">
-                    <TableOfContents items={toc} />
-                  </div>
-                </aside>
+                <div className="sticky top-28">
+                  <TableOfContents items={toc} />
+                </div>
+              )}
+            </aside>
+
+            {/* Article Content */}
+            <article className="min-w-0">
+              {/* Table of Contents - Mobile */}
+              {toc.length > 0 && (
+                <div className="mb-12 lg:hidden">
+                  <TableOfContents items={toc} />
+                </div>
               )}
 
-              {/* Article Content */}
-              <article className="flex-1 min-w-0 max-w-3xl">
-                {/* Table of Contents - Mobile */}
-                {toc.length > 0 && (
-                  <div className="lg:hidden mb-12">
-                    <TableOfContents items={toc} />
-                  </div>
-                )}
-
-                <div className="prose-editorial">
-                  <CodeCopyInjector />
-                  <MDXRemote
-                    source={post.content}
-                    components={mdxComponents}
-                    options={{
-                      mdxOptions: {
-                        remarkPlugins: [remarkGfm],
-                        rehypePlugins: [
-                          rehypeSlug,
-                          [
-                            rehypePrettyCode,
-                            {
-                              theme: {
-                                dark: "github-dark",
-                                light: "github-light",
-                              },
-                              keepBackground: true,
+              <div className="article-body">
+                <CodeCopyInjector />
+                <MDXRemote
+                  source={post.content}
+                  components={mdxComponents}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [remarkGfm],
+                      rehypePlugins: [
+                        rehypeSlug,
+                        [
+                          rehypePrettyCode,
+                          {
+                            theme: {
+                              dark: "github-dark",
+                              light: "github-light",
                             },
-                          ],
+                            keepBackground: true,
+                          },
                         ],
-                      },
-                    }}
-                  />
-                </div>
+                      ],
+                    },
+                  }}
+                />
+              </div>
 
-                {/* Post Footer */}
-                {post.author && (
-                  <div className="mt-16 pt-8 border-t-2 border-foreground">
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-8 border-2 border-foreground bg-card">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={post.author.image}
-                        alt={post.author.name}
-                        width={80}
-                        height={80}
-                        className="w-20 h-20 object-cover"
-                      />
-                      <div className="text-center sm:text-left">
-                        <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                          Written by
-                        </span>
-                        <Link
-                          href={`/blog/author/${post.author.slug}`}
-                          className="block font-serif text-2xl mt-2 hover:text-primary transition-colors"
-                        >
-                          {post.author.name}
-                        </Link>
-                        <p className="text-muted-foreground mt-2">
-                          {post.author.bio}
-                        </p>
-                      </div>
-                    </div>
+              {/* Post Footer */}
+              {post.author && (
+                <div className="mt-20 flex flex-col items-start gap-6 rounded-[28px] bg-paper-2 p-7 sm:flex-row sm:items-center md:p-9">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.author.image}
+                    alt={post.author.name}
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 rounded-full object-cover"
+                  />
+                  <div className="flex-1">
+                    <p className="text-[13px] font-medium text-muted-foreground">Written by</p>
+                    <Link
+                      href={`/blog/author/${post.author.slug}`}
+                      className="mt-1 block text-[24px] font-semibold tracking-[-0.03em] hover:text-brand-text"
+                    >
+                      {post.author.name}
+                    </Link>
+                    <p className="mt-1 text-muted-foreground">{post.author.bio}</p>
                   </div>
-                )}
-              </article>
-            </div>
+                  <a href="#contact" className="btn btn-ink">
+                    Say hello
+                  </a>
+                </div>
+              )}
+            </article>
           </div>
         </div>
 
         {/* Recent Posts */}
         {recentPosts.length > 0 && (
-          <section className="py-16 md:py-24 border-t-2 border-foreground">
-            <div className="max-w-[1200px] mx-auto px-6">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 block">
-                Recent Articles
-              </span>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {recentPosts.map((p) => (
-                  <BlogCard key={p.slug} post={p} />
-                ))}
-              </div>
+          <section className="shell pb-28 md:pb-40">
+            <div className="mb-12 flex items-end justify-between border-t border-ink/10 pt-16">
+              <h2 className="font-display text-[clamp(56px,8vw,128px)]">
+                Keep <span className="font-serif font-normal normal-case italic tracking-[-0.04em]">reading</span>
+              </h2>
+            </div>
+            <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+              {recentPosts.map((p, i) => (
+                <PostCard key={p.slug} post={p} delay={i * 80} />
+              ))}
             </div>
           </section>
         )}
-
-        {/* Footer */}
-        <footer className="py-8 border-t-2 border-foreground">
-          <div className="max-w-[1200px] mx-auto px-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="font-mono text-sm text-muted-foreground">
-                © {new Date().getFullYear()} Atharva Deosthale
-              </p>
-              <div className="flex items-center gap-6">
-                <Link
-                  href="/"
-                  className="font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/blog"
-                  className="font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Blog
-                </Link>
-              </div>
-            </div>
-          </div>
-        </footer>
       </main>
+      <Contact compact />
     </>
   );
 }

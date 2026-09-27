@@ -513,6 +513,9 @@ html.js [data-reveal].is-in {
   /* Photo box: 870 x 1878 cutout */
   --fig-ratio: 0.4633;
   --fig-h: min(90cqh, 1000px);
+  /* The head sits left of centre in the cutout; nudge the photo right so
+     the face, not the image box, lines up with the middle of the page */
+  --fig-shift: calc(var(--fig-h) * 0.05);
   /* "ATHARVA" is ~3.43em wide at 62% width / 800 weight */
   --name-size: min(calc((100cqw - var(--gutter) * 2) / 3.45), 44cqh);
   --name-bottom: calc(var(--fig-h) * 0.4);
@@ -597,11 +600,11 @@ html.js [data-reveal].is-in {
 }
 
 .hero-hey > span:first-child {
-  right: calc(50% + var(--fig-h) * 0.185);
+  right: calc(50% + var(--fig-h) * 0.185 - var(--fig-shift));
 }
 
 .hero-hey > span:last-child {
-  left: calc(50% + var(--fig-h) * 0.06);
+  left: calc(50% + var(--fig-h) * 0.06 + var(--fig-shift));
 }
 
 @keyframes hey-in {
@@ -655,7 +658,7 @@ html.js [data-reveal].is-in {
   height: var(--fig-h);
   aspect-ratio: 870 / 1878;
   transform: translate3d(
-    calc(-50% + var(--mx) * -8px),
+    calc(-50% + var(--fig-shift) + var(--mx) * -8px),
     calc(var(--my) * -4px + var(--sp) * 90px),
     0
   );
@@ -694,7 +697,7 @@ html.js [data-reveal].is-in {
   -webkit-text-stroke: 1.5px hsl(var(--brand-soft));
   /* Cancels the figure's own shift so both copies of the word line up */
   transform: translate3d(
-    calc(-50% + var(--mx) * 18px),
+    calc(-50% - var(--fig-shift) + var(--mx) * 18px),
     calc(var(--my) * 10px + var(--sp) * -30px),
     0
   );
@@ -713,7 +716,11 @@ html.js [data-reveal].is-in {
   white-space: nowrap;
   background: hsl(var(--ink));
   color: hsl(var(--paper-2));
-  box-shadow: 0 14px 30px -14px hsl(var(--ink) / 0.6);
+  /* A paper rim, like a sticker, so the chips separate from the black
+     letters they float over */
+  box-shadow:
+    0 0 0 3px hsl(var(--paper-2)),
+    0 14px 30px -12px hsl(var(--ink) / 0.55);
   animation: chip-in 1s var(--ease-out) both;
 }
 
@@ -980,7 +987,7 @@ html.js [data-reveal].is-in {
   }
 
   .hero-chip--b {
-    right: -14%;
+    right: 6%;
     top: 20%;
   }
 
@@ -1503,12 +1510,13 @@ html.js [data-reveal].is-in {
   left: 50%;
   top: 22px;
   width: min(64%, 300px);
-  translate: -50% 0;
+  /* -39%, not -50%: the head sits left of centre in the cutout */
+  translate: -39% 0;
   transition: translate 0.9s var(--ease-out);
 }
 
 .bento-c:hover .bento-cta-photo img {
-  translate: -50% -10px;
+  translate: -39% -10px;
 }
 
 @media (min-width: 1100px) {

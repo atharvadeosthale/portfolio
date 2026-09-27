@@ -4,6 +4,7 @@ import About from "@/components/home/about";
 import Tapes from "@/components/home/tapes";
 import Bento from "@/components/home/bento";
 import Process from "@/components/home/process";
+import Products from "@/components/home/products";
 import Testimonials from "@/components/home/testimonials";
 import Experience from "@/components/home/experience";
 import Writing from "@/components/home/writing";
@@ -20,6 +21,7 @@ export default function Home() {
 
         <Bento />
         <Process />
+        <Products />
 
         <section id="experience" className="pt-24 md:pt-40">
           <div className="shell">

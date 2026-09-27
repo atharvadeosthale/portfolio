@@ -35,10 +35,7 @@ export default function Products() {
                   loading="lazy"
                   className="exp-logo h-12 w-12 shrink-0 rounded-2xl md:h-14 md:w-14"
                 />
-                <div>
-                  <h3 className="font-display text-[44px] md:text-[64px]">{p.name}</h3>
-                  <p className="mt-2 text-[15px] font-medium text-muted-foreground">{p.label}</p>
-                </div>
+                <h3 className="font-display text-[44px] md:text-[64px]">{p.name}</h3>
               </div>
 
               <p className="max-w-[520px] text-pretty text-[16px] leading-relaxed">{p.description}</p>

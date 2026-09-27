@@ -9,31 +9,6 @@ import {
 import Statement from "./statement";
 import CountUp from "./count-up";
 
-const stats = [
-  {
-    value: 5,
-    suffix: "+",
-    label: "Years making content for developers, starting with LogRocket in 2021",
-  },
-  {
-    value: 4,
-    pad: 2,
-    label: "Developer-focused companies I've created docs, posts and videos for",
-  },
-  {
-    value: 6,
-    suffix: "×",
-    label: "Estimated speed-up from the AI automation I brought to DevRel work",
-  },
-];
-
-const companies = [
-  { src: "/appwrite.png", name: "Appwrite" },
-  { src: "/myshell.png", name: "MyShell.ai" },
-  { src: "/thirdweb.jpeg", name: "thirdweb" },
-  { src: "/logrocket.jpeg", name: "LogRocket" },
-];
-
 // Floating skill pills around the statement (desktop), a wrapped row on mobile
 const skills = [
   { label: "DevRel", icon: FaUsers, color: "#2a3cff", side: "l", y: "4%", x: "2%", r: -6 },
@@ -85,46 +60,17 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-20 grid gap-2 md:mt-32 md:grid-cols-3 md:gap-3">
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className="flex flex-col justify-between gap-10 rounded-[28px] bg-paper-2 p-6 md:min-h-[260px] md:p-8"
-              data-reveal
-              style={{ "--d": i * 90 } as React.CSSProperties}
-            >
-              <p className="font-display stat-num">
-                <CountUp to={stat.value} pad={stat.pad} />
-                {stat.suffix && <sup>{stat.suffix}</sup>}
-              </p>
-              <p className="max-w-[280px] text-[15px] leading-snug text-muted-foreground">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-
         <div
-          className="mt-2 flex flex-col gap-4 rounded-[28px] bg-paper-2 p-6 md:mt-3 md:flex-row md:items-center md:justify-between md:p-8"
+          className="mx-auto mt-16 flex w-fit items-center gap-5 border-t border-ink/10 pt-10 md:mt-24 md:gap-6"
           data-reveal
         >
-          <p className="text-[15px] font-medium">Worked with</p>
-          <ul className="grid grid-cols-2 gap-x-8 gap-y-4 sm:flex sm:flex-wrap sm:items-center sm:gap-x-10">
-            {companies.map((c) => (
-              <li key={c.name} className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={c.src}
-                  alt=""
-                  width={32}
-                  height={32}
-                  loading="lazy"
-                  className="h-8 w-8 rounded-[10px] object-cover"
-                />
-                <span className="text-[17px] font-semibold tracking-tight">{c.name}</span>
-              </li>
-            ))}
-          </ul>
+          <p className="font-display stat-num">
+            <CountUp to={5} />
+            <sup>+</sup>
+          </p>
+          <p className="max-w-[170px] text-[15px] leading-snug text-muted-foreground">
+            Years making content for developers
+          </p>
         </div>
       </div>
     </section>

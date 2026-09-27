@@ -1,9 +1,9 @@
 import { FaArrowRight } from "react-icons/fa6";
 import {
-  SiAppwrite,
   SiGithub,
   SiMarkdown,
   SiNextdotjs,
+  SiNodedotjs,
   SiTypescript,
   SiYoutube,
 } from "react-icons/si";
@@ -14,14 +14,13 @@ const videoPills = [
   { label: "Recording", x: "6%", y: "62%", r: -4 },
   { label: "Editing", x: "38%", y: "50%", r: 18 },
   { label: "Publishing", x: "58%", y: "70%", r: -8 },
-  { label: "Appwrite channel", x: "4%", y: "80%", r: 3 },
-  { label: "My channel", x: "52%", y: "86%", r: 0 },
+  { label: "My channel", x: "14%", y: "84%", r: 3 },
 ];
 
 const orbit = [
   { icon: SiMarkdown, a: -64 },
   { icon: SiGithub, a: -38 },
-  { icon: SiAppwrite, a: -13 },
+  { icon: SiNodedotjs, a: -13 },
   { icon: SiYoutube, a: 13 },
   { icon: SiNextdotjs, a: 38 },
   { icon: SiTypescript, a: 64 },
@@ -86,7 +85,7 @@ export default function Bento() {
             <Tile
               tone="glass"
               title="Videos"
-              body="Recording, editing and publishing YouTube videos for Appwrite, plus videos on my own channel."
+              body="Recording, editing and publishing videos on my YouTube channel."
               className="bento-a"
             >
               <div className="bento-pills" aria-hidden>
@@ -104,7 +103,7 @@ export default function Bento() {
             <Tile
               tone="white"
               title="Docs"
-              body="High quality documentation at Appwrite, the docs at MyShell.ai, and guides at thirdweb."
+              body="Quality documentation that developers can actually follow."
               className="bento-b"
               delay={80}
             >
@@ -123,10 +122,9 @@ export default function Bento() {
                     <b />
                   </div>
                   <pre>
-                    <span className="k">const</span> client = <span className="k">new</span>{" "}
-                    <span className="f">Client</span>()
-                    {"\n"}  .<span className="f">setEndpoint</span>(<span className="s">&apos;https://cloud.appwrite.io/v1&apos;</span>)
-                    {"\n"}  .<span className="f">setProject</span>(<span className="s">&apos;&lt;PROJECT_ID&gt;&apos;</span>);
+                    <span className="k">import</span> {"{ "}<span className="f">createClient</span>{" }"} <span className="k">from</span>{" "}
+                    <span className="s">&apos;sdk&apos;</span>;
+                    {"\n\n"}<span className="k">const</span> client = <span className="f">createClient</span>();
                   </pre>
                 </div>
               </div>
@@ -159,7 +157,7 @@ export default function Bento() {
             <Tile
               tone="glass"
               title="Writing"
-              body="Blog posts for Appwrite, technical articles for LogRocket, and my own posts right here."
+              body="Technical articles and blog posts, including my own right here."
               className="bento-d"
               delay={80}
             >
@@ -174,7 +172,7 @@ export default function Bento() {
             <Tile
               tone="white"
               title="AI automation"
-              body="Taking the lead on AI-native automation for Appwrite's DevRel processes, an estimated 6× faster."
+              body="Using AI to automate the repetitive parts of DevRel work."
               className="bento-e"
               delay={160}
             >

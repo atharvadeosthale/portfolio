@@ -30,10 +30,6 @@ export default function Home() {
                   Where I&apos;ve <span className="font-serif font-normal normal-case italic tracking-[-0.04em]">been</span>
                 </h2>
               </div>
-              <p className="max-w-[300px] pb-3 text-[15px] leading-relaxed text-muted-foreground" data-reveal>
-                DevRel, docs and technical writing across developer tools, AI and
-                web3 since 2021.
-              </p>
             </div>
             <Experience />
           </div>

@@ -17,11 +17,9 @@ const tokens: Token[] = [
   { type: "icon", icon: "code" },
   ...words("and make"),
   ...words("content", true),
-  ...words("about it. Right now that means docs, blog posts and videos"),
+  ...words("about it: videos"),
   { type: "icon", icon: "play" },
-  ...words("as a Developer Advocate at"),
-  { type: "pic", src: "/appwrite.png", alt: "", logo: true },
-  ...words("Appwrite."),
+  ...words("on my YouTube channel, docs and blog posts for developers."),
 ];
 
 export default function Statement() {

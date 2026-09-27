@@ -1426,12 +1426,11 @@ html.js [data-reveal].is-in {
   box-shadow:
     0 0 0 3px hsl(var(--brand) / 0.9),
     0 20px 40px -20px hsl(var(--brand) / 0.7);
-  transform: translateY(12px);
   transition: transform 0.7s var(--ease-out);
 }
 
 .bento-b:hover .bento-doc {
-  transform: translateY(0);
+  transform: translateY(-4px);
 }
 
 .bento-doc-bar {

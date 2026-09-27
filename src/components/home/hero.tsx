@@ -112,8 +112,8 @@ export default function Hero() {
         <div className="hero-card">
           <Seal className="hero-seal" />
           <p>
-            I write code and make content about it: docs, blog posts and
-            YouTube videos for developers.
+            I write code and make content about it: YouTube videos, docs and
+            blog posts for developers.
           </p>
           <div className="hero-card-actions">
             <a href="#contact" className="btn btn-ink">

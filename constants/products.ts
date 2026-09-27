@@ -15,6 +15,6 @@ export const products: Product[] = [
     url: "https://takeone.atharva.codes",
     label: "Open source",
     description:
-      "An SDK, CLI and agent skill for recording polished, Screen Studio style videos of web apps.",
+      "An open source SDK, CLI and agent skill for recording polished, Screen Studio style videos of web apps.",
   },
 ];

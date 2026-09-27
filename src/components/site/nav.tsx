@@ -16,12 +16,18 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock page scroll while the menu is open. The cleanup also runs on unmount,
+  // so Back/Forward with the menu open doesn't leave the next page locked.
   useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
     if (!open) return;
+    const root = document.documentElement;
+    root.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      root.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   return (

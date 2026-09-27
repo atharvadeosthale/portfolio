@@ -42,15 +42,15 @@ export function AuthorBadge({
         src={author.image}
         alt={author.name}
         className={cn(
-          "object-cover transition-all duration-300",
+          "rounded-full object-cover transition-all duration-300",
           sizeClasses[size]
         )}
       />
       <div className="flex flex-col">
         <span
           className={cn(
-            "font-medium transition-colors duration-300",
-            linked && "group-hover:text-primary",
+            "font-semibold transition-colors duration-300",
+            linked && "group-hover:text-brand-text",
             textClasses[size]
           )}
         >

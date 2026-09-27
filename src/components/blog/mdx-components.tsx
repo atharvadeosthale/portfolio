@@ -11,7 +11,7 @@ export const mdxComponents = {
   h1: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       id={typeof children === "string" ? slugify(children) : undefined}
-      className="font-serif text-4xl md:text-5xl tracking-tight mt-12 mb-6 scroll-mt-24"
+      className="text-[40px] md:text-[48px] font-semibold leading-[1.05] tracking-[-0.04em] mt-16 mb-6 scroll-mt-28"
       {...props}
     >
       {children}
@@ -20,12 +20,12 @@ export const mdxComponents = {
   h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       id={typeof children === "string" ? slugify(children) : undefined}
-      className="font-serif text-3xl md:text-4xl tracking-tight mt-12 mb-6 scroll-mt-24 group border-b-2 border-foreground/10 pb-4"
+      className="text-[30px] md:text-[36px] font-semibold leading-[1.1] tracking-[-0.035em] mt-16 mb-5 scroll-mt-28 group"
       {...props}
     >
       <a
         href={`#${typeof children === "string" ? slugify(children) : ""}`}
-        className="no-underline hover:text-primary transition-colors"
+        className="no-underline transition-colors hover:text-brand-text"
       >
         {children}
       </a>
@@ -34,12 +34,12 @@ export const mdxComponents = {
   h3: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       id={typeof children === "string" ? slugify(children) : undefined}
-      className="font-serif text-2xl md:text-3xl tracking-tight mt-10 mb-4 scroll-mt-24 group"
+      className="text-[23px] md:text-[26px] font-semibold leading-[1.2] tracking-[-0.03em] mt-12 mb-4 scroll-mt-28 group"
       {...props}
     >
       <a
         href={`#${typeof children === "string" ? slugify(children) : ""}`}
-        className="no-underline hover:text-primary transition-colors"
+        className="no-underline transition-colors hover:text-brand-text"
       >
         {children}
       </a>
@@ -47,7 +47,7 @@ export const mdxComponents = {
   ),
   h4: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
-      className="font-serif text-xl tracking-tight mt-8 mb-3"
+      className="text-[20px] font-semibold tracking-[-0.02em] mt-10 mb-3"
       {...props}
     >
       {children}
@@ -55,7 +55,7 @@ export const mdxComponents = {
   ),
   p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
-      className="text-foreground/90 leading-[1.8] mb-6 text-lg"
+      className="text-foreground/85 leading-[1.75] mb-6 text-[18px]"
       {...props}
     >
       {children}
@@ -70,7 +70,7 @@ export const mdxComponents = {
       href={href}
       target={href?.startsWith("http") ? "_blank" : undefined}
       rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="text-primary font-medium underline underline-offset-4 decoration-primary/50 hover:decoration-primary transition-colors"
+      className="font-medium text-foreground underline decoration-brand/60 decoration-[1.5px] underline-offset-[5px] transition-colors hover:text-brand-text hover:decoration-brand"
       {...props}
     >
       {children}
@@ -78,7 +78,7 @@ export const mdxComponents = {
   ),
   ul: ({ children, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
-      className="list-none mb-6 space-y-3 text-foreground/90 text-lg"
+      className="list-none mb-6 space-y-2.5 text-foreground/85 text-[18px]"
       {...props}
     >
       {children}
@@ -86,14 +86,14 @@ export const mdxComponents = {
   ),
   ol: ({ children, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
-      className="list-decimal list-outside ml-6 mb-6 space-y-3 text-foreground/90 text-lg"
+      className="list-decimal list-outside ml-6 mb-6 space-y-2.5 text-foreground/85 text-[18px] marker:text-muted-foreground marker:font-medium"
       {...props}
     >
       {children}
     </ol>
   ),
   li: ({ children, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="leading-[1.8] relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary" {...props}>
+    <li className="leading-[1.75] relative pl-6 [ul>&]:before:absolute [ul>&]:before:left-1 [ul>&]:before:top-[0.7em] [ul>&]:before:h-1.5 [ul>&]:before:w-1.5 [ul>&]:before:rounded-full [ul>&]:before:bg-brand [ol>&]:pl-1" {...props}>
       {children}
     </li>
   ),
@@ -102,14 +102,14 @@ export const mdxComponents = {
     ...props
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className="border-l-4 border-primary pl-6 my-8 font-serif italic text-xl text-muted-foreground"
+      className="my-10 rounded-[20px] bg-paper-2 px-7 py-6 font-serif italic text-[22px] leading-snug tracking-[-0.02em] text-foreground/80 [&_p]:mb-0 [&_p]:text-[inherit] [&_p]:leading-[inherit]"
       {...props}
     >
       {children}
     </blockquote>
   ),
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
-    <hr className="border-0 h-[2px] bg-foreground/10 my-12" {...props} />
+    <hr className="border-0 h-px bg-ink/10 my-14" {...props} />
   ),
   strong: ({ children, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <strong className="font-semibold text-foreground" {...props}>
@@ -117,7 +117,7 @@ export const mdxComponents = {
     </strong>
   ),
   em: ({ children, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <em className="font-serif italic" {...props}>
+    <em className="italic" {...props}>
       {children}
     </em>
   ),
@@ -131,7 +131,7 @@ export const mdxComponents = {
     if (isInline) {
       return (
         <code
-          className="px-2 py-1 bg-foreground/10 text-sm font-mono text-foreground border border-foreground/20"
+          className="rounded-md bg-ink/[0.07] px-1.5 py-0.5 font-mono text-[0.85em] text-foreground"
           {...props}
         >
           {children}
@@ -149,8 +149,7 @@ export const mdxComponents = {
     return (
       <pre
         className={cn(
-          "overflow-x-auto p-6 text-sm my-8 font-mono",
-          "border-2 border-foreground",
+          "overflow-x-auto p-6 text-sm my-8 font-mono rounded-[18px]",
           "[&_code]:bg-transparent [&_code]:p-0 [&_code]:border-0"
         )}
         {...props}
@@ -160,9 +159,9 @@ export const mdxComponents = {
     );
   },
   table: ({ children, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="overflow-x-auto my-8">
+    <div className="overflow-x-auto my-8 rounded-[18px] bg-paper-2 p-2">
       <table
-        className="w-full border-collapse border-2 border-foreground"
+        className="w-full border-collapse text-[15px]"
         {...props}
       >
         {children}
@@ -174,7 +173,7 @@ export const mdxComponents = {
     ...props
   }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
-      className="border-2 border-foreground bg-foreground text-background px-4 py-3 text-left font-mono text-sm uppercase tracking-wider"
+      className="border-b border-ink/15 px-4 py-3 text-left text-[13px] font-semibold text-muted-foreground"
       {...props}
     >
       {children}
@@ -184,7 +183,7 @@ export const mdxComponents = {
     children,
     ...props
   }: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td className="border-2 border-foreground px-4 py-3" {...props}>
+    <td className="border-b border-ink/10 px-4 py-3" {...props}>
       {children}
     </td>
   ),
@@ -193,7 +192,7 @@ export const mdxComponents = {
     <img
       src={src}
       alt={alt || ""}
-      className="my-8 max-w-full h-auto border-2 border-foreground"
+      className="my-8 max-w-full h-auto rounded-[14px]"
       {...props}
     />
   ),

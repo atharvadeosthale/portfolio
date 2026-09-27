@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import { FeaturedPost } from "@/components/blog/featured-post";
-import { BlogCard } from "@/components/blog/blog-card";
 import { getAllPosts } from "@/lib/posts";
-import Navbar from "@/components/navbar";
-import Link from "next/link";
+import { PostCard } from "@/components/blog/post-card";
+import { BackLink } from "@/components/blog/page-header";
+import Nav from "@/components/site/nav";
+import Contact from "@/components/site/contact";
 
 export const metadata: Metadata = {
   title: "Blog — Atharva Deosthale",
@@ -31,125 +31,56 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const posts = getAllPosts();
-  const featuredPost = posts.find((post) => post.featured);
-  const otherPosts = posts.filter((post) => !post.featured);
+  const featured = posts.find((post) => post.featured) ?? posts[0];
+  const rest = posts.filter((post) => post !== featured);
 
   return (
-    <main className="relative">
-      {/* Noise texture */}
-      <div className="noise" />
+    <>
+      <Nav />
+      <main className="relative overflow-x-clip">
+        <div className="page-glow" aria-hidden />
 
-      <Navbar />
-
-      {/* Hero */}
-      <section className="py-16 md:py-24 border-b-2 border-foreground">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M7 16l-4-4m0 0l4-4m-4 4h18"
-              />
-            </svg>
-            Back to Home
-          </Link>
-
-          <div className="flex items-end justify-between">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
-                Writing
-              </span>
-              <h1 className="font-serif text-5xl md:text-7xl mt-4">
-                Thoughts &<br />
-                <span className="text-primary">Tutorials</span>
-              </h1>
-              <p className="text-lg text-muted-foreground mt-6 max-w-xl">
-                Deep dives into development, DevRel insights, and everything I
-                learn along the way.
-              </p>
-            </div>
-            <div className="hidden md:block h-[2px] flex-1 bg-foreground/10 ml-12 mb-4" />
+        <section className="shell pb-16 pt-32 md:pb-24 md:pt-44">
+          <div data-reveal>
+            <BackLink href="/" label="Home" />
           </div>
-        </div>
-      </section>
-
-      {/* Posts */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1200px] mx-auto px-6">
-          {posts.length === 0 ? (
-            <div className="text-center py-20 border-2 border-dashed border-foreground/20">
-              <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
-                No posts yet. Check back soon!
+          <div className="mt-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+            <h1 className="font-display text-[clamp(96px,19vw,300px)]" data-reveal>
+              Writ<span className="text-brand-text">ing</span>
+            </h1>
+            <p
+              className="max-w-[340px] pb-4 text-[17px] leading-relaxed text-muted-foreground"
+              data-reveal
+            >
+              Deep dives into development, DevRel insights, and everything I
+              learn along the way.
+              <span className="mt-4 block text-[13px] font-medium text-foreground">
+                {posts.length} {posts.length === 1 ? "post" : "posts"}
               </span>
-            </div>
-          ) : featuredPost ? (
-            <>
-              {/* Featured Post */}
-              <div className="mb-16">
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 block">
-                  Featured Article
-                </span>
-                <FeaturedPost post={featuredPost} />
-              </div>
+            </p>
+          </div>
+        </section>
 
-              {/* Other Posts Grid */}
-              {otherPosts.length > 0 && (
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 block">
-                    All Articles
-                  </span>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {otherPosts.map((post) => (
-                      <BlogCard key={post.slug} post={post} />
-                    ))}
-                  </div>
+        <section className="shell pb-28 md:pb-40">
+          {posts.length === 0 ? (
+            <div className="rounded-[28px] bg-paper-2 px-6 py-24 text-center text-muted-foreground">
+              No posts yet. Check back soon!
+            </div>
+          ) : (
+            <>
+              <PostCard post={featured} large className="lg:max-w-none" />
+              {rest.length > 0 && (
+                <div className="mt-16 grid gap-x-6 gap-y-14 border-t border-ink/10 pt-16 sm:grid-cols-2 lg:grid-cols-3">
+                  {rest.map((post, i) => (
+                    <PostCard key={post.slug} post={post} delay={(i % 3) * 80} />
+                  ))}
                 </div>
               )}
             </>
-          ) : (
-            /* Grid Layout - No Featured Post */
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 block">
-                All Articles
-              </span>
-              <div className="grid md:grid-cols-2 gap-8">
-                {posts.map((post) => (
-                  <BlogCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </div>
           )}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 border-t-2 border-foreground">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-mono text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Atharva Deosthale
-            </p>
-            <div className="flex items-center gap-6">
-              <Link
-                href="/"
-                className="font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Home
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </main>
+        </section>
+      </main>
+      <Contact compact />
+    </>
   );
 }

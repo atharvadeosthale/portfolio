@@ -1,30 +1,22 @@
-import { FaArrowRight } from "react-icons/fa6";
 import {
-  SiGithub,
-  SiMarkdown,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiTypescript,
-  SiYoutube,
-} from "react-icons/si";
+  FaArrowRight,
+  FaBolt,
+  FaCheck,
+  FaPlay,
+  FaWandMagicSparkles,
+  FaYoutube,
+} from "react-icons/fa6";
 import { EMAIL } from "@/lib/site";
 import { getAllPosts } from "@/lib/posts";
+import { CHANNEL_URL, getLatestVideos } from "@/lib/youtube";
 
-const videoPills = [
-  { label: "Recording", x: "6%", y: "62%", r: -4 },
-  { label: "Editing", x: "38%", y: "50%", r: 18 },
-  { label: "Publishing", x: "58%", y: "70%", r: -8 },
-  { label: "My channel", x: "14%", y: "84%", r: 3 },
+const flow = [
+  { icon: FaBolt, label: "Trigger" },
+  { icon: FaWandMagicSparkles, label: "Agent" },
+  { icon: FaCheck, label: "Output" },
 ];
 
-const orbit = [
-  { icon: SiMarkdown, a: -64 },
-  { icon: SiGithub, a: -38 },
-  { icon: SiNodedotjs, a: -13 },
-  { icon: SiYoutube, a: 13 },
-  { icon: SiNextdotjs, a: 38 },
-  { icon: SiTypescript, a: 64 },
-];
+const dateFormat = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
 
 function Tile({
   tone,
@@ -58,7 +50,8 @@ function Tile({
   );
 }
 
-export default function Bento() {
+export default async function Bento() {
+  const videos = await getLatestVideos(3);
   const covers = getAllPosts()
     .slice(0, 3)
     .map((p) => p.cover);
@@ -85,18 +78,42 @@ export default function Bento() {
             <Tile
               tone="glass"
               title="Videos"
-              body="Recording, editing and publishing videos on my YouTube channel."
+              body="The latest from my YouTube channel."
               className="bento-a"
             >
-              <div className="bento-pills" aria-hidden>
-                {videoPills.map((p) => (
-                  <span
-                    key={p.label}
-                    style={{ left: p.x, top: p.y, rotate: `${p.r}deg` } as React.CSSProperties}
-                  >
-                    {p.label}
-                  </span>
-                ))}
+              <div className="bento-videos">
+                {videos.length > 0 && (
+                  <ul>
+                    {videos.map((v) => (
+                      <li key={v.id}>
+                        <a
+                          href={`https://www.youtube.com/watch?v=${v.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bento-video"
+                        >
+                          <span className="bento-video-play" aria-hidden>
+                            <FaPlay />
+                          </span>
+                          <span className="min-w-0 flex-1 truncate">{v.title}</span>
+                          <span className="shrink-0 text-[12px] opacity-60">
+                            {dateFormat.format(v.published)}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <a
+                  href={CHANNEL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bento-channel"
+                >
+                  <FaYoutube className="h-4 w-4" />
+                  @AtharvaDeosthale
+                  <FaArrowRight className="h-3 w-3 -rotate-45" />
+                </a>
               </div>
             </Tile>
 
@@ -176,12 +193,17 @@ export default function Bento() {
               className="bento-e"
               delay={160}
             >
-              <div className="bento-orbit" aria-hidden>
-                <div className="bento-orbit-rings" />
-                {orbit.map(({ icon: Icon, a }) => (
-                  <span key={a} style={{ "--a": `${a}deg` } as React.CSSProperties}>
-                    <Icon />
-                  </span>
+              <div className="bento-flow" aria-hidden>
+                <div className="bento-flow-line">
+                  <i />
+                </div>
+                {flow.map(({ icon: Icon, label }, i) => (
+                  <div key={label} className="bento-flow-node" style={{ "--i": i } as React.CSSProperties}>
+                    <span>
+                      <Icon />
+                    </span>
+                    {label}
+                  </div>
                 ))}
               </div>
             </Tile>

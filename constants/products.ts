@@ -7,7 +7,7 @@ export interface Product {
   description: string;
 }
 
-// Products I've launched, newest first. Descriptions come from each product's own site.
+// Products I've launched, newest first.
 export const products: Product[] = [
   {
     name: "takeone",
@@ -15,6 +15,6 @@ export const products: Product[] = [
     url: "https://takeone.atharva.codes",
     label: "Open source",
     description:
-      "An open source skill that lets coding agents record polished, Screen Studio style videos of web apps.",
+      "An SDK, CLI and agent skill for recording polished, Screen Studio style videos of web apps.",
   },
 ];
